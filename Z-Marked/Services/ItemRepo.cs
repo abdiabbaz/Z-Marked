@@ -8,21 +8,9 @@ namespace Z_Marked.Services
 
         public ItemRepo()
         {
-            _items = new List<Item>();
+            _items = MockItems.GetMockItems();
+            
         }
-
-        public ItemRepo(bool mockdata)
-        {
-            if (mockdata)
-            {
-              
-
-            }
-
-        }
-
-
-
         public Item Create(Item item)
         {
             _items.Add(item);

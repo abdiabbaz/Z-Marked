@@ -5,7 +5,7 @@
         public int Id { get; set; }
         public string? Name { get; set; }
 
-        public int Price { get; set; }
+        public double Price { get; set; }
         public string? Category { get; set; }
 
         public string? Description { get; set; }
@@ -14,9 +14,9 @@
 
         public string? Imagepath { get; set; }
 
-        public Item() : this(0, "", 0, "", "", "", "") { }
+        public Item() : this(0, "", 0.0, "", "", "", "") { }
 
-        public Item(int id, string? name, int price, string? description, string category, string? nutritionalContent, string? imagepath)
+        public Item(int id, string? name, double price, string? description, string category, string? nutritionalContent, string? imagepath)
         {
             Id = id;
             Name = name;
@@ -26,10 +26,9 @@
             NutritionalContent = nutritionalContent;
             Imagepath = imagepath;
         }
-
         public override string ToString()
         {
-            return $"{{{nameof(Id)}={Id.ToString()}, {nameof(Name)}={Name}, {nameof(Description)}={Description}, {nameof(NutritionalContent)}={NutritionalContent}, {nameof(Imagepath)}={Imagepath}}}";
+            return $"{{{nameof(Id)}={Id.ToString()}, {nameof(Name)}={Name}, {nameof(Price)}={Price.ToString()}, {nameof(Category)}={Category}, {nameof(Description)}={Description}, {nameof(NutritionalContent)}={NutritionalContent}, {nameof(Imagepath)}={Imagepath}}}";
         }
     }
 }
