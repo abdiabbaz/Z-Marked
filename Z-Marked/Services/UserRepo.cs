@@ -1,6 +1,6 @@
-﻿using Z_Marked.Pages.UserFiles;
+﻿using Z_Marked.Model;
 
-namespace Z_Marked.Pages.services
+namespace Z_Marked.Services
 {
     public class UserRepo : IUserSource
     {
@@ -90,7 +90,7 @@ namespace Z_Marked.Pages.services
 
         public override string ToString()
         {
-            string usrstring = $"Number of users in list: {_userList.Count}\n\a\t";
+            string usrstring = $"Number of users in list: {_userList.Count}\n\t";
             foreach (User usr in _userList)
             {
                 usrstring += $"{usr.ToString()}\n\t";

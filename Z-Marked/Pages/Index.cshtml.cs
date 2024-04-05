@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Z_Marked.Pages.services;
+using Z_Marked.Services;
 
 namespace Z_Marked.Pages
 {

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Z_Marked.Pages.services;
+using Z_Marked.Services;
 
 namespace Z_Marked.Pages.UserFiles.Logins
 {
@@ -18,7 +18,7 @@ namespace Z_Marked.Pages.UserFiles.Logins
         public string UserName { get; set; }
         public string Password { get; set; }
 
-        public IActionResult OnPostLogout()
+        public IActionResult OnPost()
         {
             if (_repo.IsValidLogin(UserName, Password))
             {
