@@ -1,0 +1,9 @@
+﻿@page
+@model Z_Marked.Pages.UserFiles.Logins.LogoutModel
+@{
+}
+<h1>Er du sikker på at du vil logge ud? FR FR</h1>
+<form method="post">
+    <input type="button" class="btn btn-warning" asp-page-handler="Logout" value="Næ" asp-route-logud="false"/>
+    <input type="button" class="btn btn-primary" asp-page-handler="Logout" value="Jada" asp-route-logud="true" />
+</form>
