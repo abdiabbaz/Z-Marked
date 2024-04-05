@@ -1,8 +1,10 @@
+using Z_Marked.Pages.services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-
+builder.Services.AddSingleton<IUserSource>(new UserRepo(true)); 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
