@@ -7,4 +7,8 @@
     <RootNamespace>Z_Marked</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\" />
+  </ItemGroup>
+
 </Project>
