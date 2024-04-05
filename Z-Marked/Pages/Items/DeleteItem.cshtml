@@ -2,7 +2,7 @@
 @model Z_Marked.Pages.Items.DeleteItemModel
 @{
 }
-<form method="post">
-    <input type="number" asp-page="./DeleteConfirmation" asp-page-handler="ItemToDelete" asp-route-id="1" placeholder="Indtast item ID" />
+<form method="get" asp-page="DeleteConfirmation" asp-page-handler="ItemToDelete" asp-route-id="ID">
+    <input type="number" asp-for="ID" placeholder="Indtast item ID" />
     <input type="submit" />
 </form>
