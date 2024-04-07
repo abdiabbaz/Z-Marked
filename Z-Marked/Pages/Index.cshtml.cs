@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Z_Marked.Model;
-using Z_Marked.Pages.services;
 using Z_Marked.Services;
 
 namespace Z_Marked.Pages
@@ -13,9 +12,8 @@ namespace Z_Marked.Pages
         private readonly Order _order;
 
 
-        [BindProperty]
-        public IUserSource Repo { get; set; }
-        [BindProperty]
+        //[BindProperty] - Problemer med denne
+        public IUserSource Repo;
         public List<Item> Items { get; set; }
 
 
@@ -27,23 +25,26 @@ namespace Z_Marked.Pages
             _order = order; 
         }
 
-        public void AddItemToCart(Item item)
-        {
-            Items.Add(item);
-        }
-
-        public IActionResult OnPost(int itemId)
+        public IActionResult OnPost(int itemId, int quantity)
         {
             var item = _itemRepo.GetItem(itemId);
-
-            AddItemToCart(item);
+            for (int i = 0; i < quantity; i++)
+            {
+                AddItemToCart(item);
+            }
 
             return RedirectToPage();
         }
 
+        public void AddItemToCart(Item item)
+        {
+            _order.AddItem(item);
+        }
+
+
         public IActionResult OnPostGoTillCart() 
         {
-            return RedirectToPage("OrderFiles/OrderPages");
+            return RedirectToPage("OrderFiles/OrderPage");
 
         }
 

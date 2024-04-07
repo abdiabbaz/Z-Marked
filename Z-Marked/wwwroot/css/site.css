@@ -58,4 +58,17 @@ b, strong{
     font-size: small;
     font-family: cursive;
 }
-    
+
+.table {
+    width: 500px;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.Kurv {
+    text-align: center;
+}

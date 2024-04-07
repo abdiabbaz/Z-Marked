@@ -9,34 +9,47 @@
 </head>
 
 <body>
-    <form method="post">
     <div class="container">
-        <div class="row">
-            @foreach (var item in Model.Items)
-            {
-                <div class="col-md-3 mt-5">
-                    <div class="card h-100">
-                        <div class="card-header">
-                            <p class="Name1st"><i>Z-MARKED</i> - @item.Description</p> 
-                        </div>
-                        <img src="@item.Imagepath" class="card-img-top" />
-
-                        <div class="card-body">
-                            <p class="card-text"><strong>@item.Name</strong></p>
-                        </div>
-                        <div class="card-footer">
-@*                             <form method="post">
- *@                                <button class="btn btn-success">Tilføj til kurv</button>
-                                <input type="hidden" name="itemId" value="@item.Id" />
-@*                             </form>
- *@                        </div>
-                        <div class="price">@item.Price,-</div>
-                    </div>
+    <form method="post" asp-page-handler="GoTillCart">
+            <div class="Cart">
+                <div>
+                    <input type="submit" value="Gå til kurv" class="btn btn-primary">
                 </div>
-            }
-        </div>
+            </div>
+
+    </form>
+
+    <form method="post" asp-page-handler="AddTillCart">
+            <div class="row">
+                @foreach (var item in Model.Items)
+                {
+                    <div class="col-md-3 mt-5">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                <p class="Name1st"><i>Z-MARKED</i> - @item.Description</p>
+                            </div>
+                            <img src="@item.Imagepath" class="card-img-top" />
+
+                            <div class="card-body">
+                                <p class="card-text"><strong>@item.Name</strong></p>
+                            </div>
+                            <div class="card-footer">
+
+                                <form method="post" asp-page-handler="AddItems">
+                                    <input type="number" name="quantity" value="1" min="1" class="form-control quantity-input" />
+                                    <input type="hidden" name="itemId" value="@item.Id" />
+                                    <button class="btn btn-success">Tilføj til kurv</button>
+                                </form>
+                            </div>
+                            <div class="price">@item.Price,-</div>
+                        </div>
+                    </div>
+                }
+            </div>
     </form>
     </div>
+
+
     @if (Model.Repo.CurrentUser != null)
     {
         <h1><a href="UserFiles/Logins/Logout">Go logout please uwu</a></h1>
