@@ -1,6 +1,6 @@
-﻿using Z_Marked.Pages.UserFiles;
+﻿using Z_Marked.Model;
 
-namespace Z_Marked.Pages.services
+namespace Z_Marked.Services
 {
     public interface IUserSource
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration.UserSecrets;
 
-namespace Z_Marked.Pages.UserFiles
+namespace Z_Marked.Model
 {
     public class User
     {
@@ -13,7 +13,7 @@ namespace Z_Marked.Pages.UserFiles
             UserID = userID;
         }
 
-        public User() : this("", "", "", "", 0){ } 
+        public User() : this("", "", "", "", 0) { }
 
         public string UserName { get; private set; }
         public string Password { get; set; }
@@ -24,7 +24,7 @@ namespace Z_Marked.Pages.UserFiles
 
         public override string ToString()
         {
-            return $"UserID: {UserID}, UserName: {UserName}, Password: {Password}, Email: {Email}, PhoneNumber: {PhoneNumber}"; 
+            return $"UserID: {UserID}, UserName: {UserName}, Password: {Password}, Email: {Email}, PhoneNumber: {PhoneNumber}";
         }
 
     }

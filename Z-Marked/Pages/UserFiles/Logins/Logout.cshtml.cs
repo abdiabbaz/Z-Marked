@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Z_Marked.Pages.services;
+using Z_Marked.Services;
 
 namespace Z_Marked.Pages.UserFiles.Logins
 {
@@ -15,13 +15,13 @@ namespace Z_Marked.Pages.UserFiles.Logins
         public void OnGet()
         {
         }
-        public IActionResult OnPostLogout(bool logud) { 
+        public IActionResult OnPostLog(bool logud) { 
             if (logud)
             {
                 _repo.CurrentUser = null;
-                return RedirectToPage("/Index"); 
+                return Redirect("~/"); 
             }
-            return RedirectToPage("/Index");
+            return Redirect("~/");
         }
     }
 }
