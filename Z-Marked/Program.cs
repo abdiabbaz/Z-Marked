@@ -1,3 +1,4 @@
+using Z_Marked.Model;
 using Z_Marked.Pages.services;
 using Z_Marked.Services;
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<IUserSource>(new UserRepo(true));
 builder.Services.AddSingleton<IItemRepo>(new ItemRepo());
+builder.Services.AddSingleton(new Order());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

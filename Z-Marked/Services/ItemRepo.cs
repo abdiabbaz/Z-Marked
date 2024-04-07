@@ -45,6 +45,8 @@ namespace Z_Marked.Services
             return existingItem;
         }
 
+        public List<Item> GetItems() { return _items; }
+
         public override string ToString()
         {
             string empty = "";

@@ -9,5 +9,6 @@ namespace Z_Marked.Services
         Item GetItem(int id);
         string ToString();
         Item Update(int id, Item item);
+        List<Item> GetItems();
     }
 }

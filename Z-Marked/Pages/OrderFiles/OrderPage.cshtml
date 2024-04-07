@@ -1,0 +1,33 @@
+﻿@page
+@model Z_Marked.Pages.OrderFiles.OrderPageModel
+@{
+}
+
+<html>
+<head>
+    <title>Kurv</title>
+</head>
+<body>
+    <h1>Kurv</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nummer</th>
+                <th>Navn</th>
+                <th>Pris</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Model.Item o in Model.Items)
+            {
+                <tr>
+                    <td>@o.Imagepath</td>
+                    <td>@o.Name</td>
+                    <td>@o.Price Kr.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <label>Samlet beløb </label> : @Model.TotalAmount Kr.
+</body>
+</html>
