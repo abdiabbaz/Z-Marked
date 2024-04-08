@@ -1,4 +1,5 @@
-﻿using Z_Marked.Model;
+﻿using Z_Marked.Exceptions;
+using Z_Marked.Model;
 
 namespace Z_Marked.Services
 {
@@ -17,7 +18,7 @@ namespace Z_Marked.Services
                 _userList.Add(new User());
                 _userList.Add(new User());
                 Console.WriteLine(_userList.Count);
-                Console.WriteLine(IsValidLogin("Anders", "Anders123"));
+                Console.WriteLine(GetUser("Anders", "Anders123"));
                 Console.WriteLine(ToString());
             }
 
@@ -30,7 +31,7 @@ namespace Z_Marked.Services
             return new List<User>(_userList);
         }
 
-        public void Add(User user)
+        public void AddUser(User user)
         {
             if (_userList.Count == 1000)
             {
@@ -39,13 +40,13 @@ namespace Z_Marked.Services
             _userList.Add(user);
         }
 
-        public void Remove(User user)
+        public void RemoveUser(User user)
         {
             _userList.Remove(user);
 
         }
 
-        public void Update(int idx, User user)
+        public void UpdateUser(int idx, User user)
         {
             User? usrToUpdate = _userList.Find(u => u.UserID == idx);
             if (usrToUpdate == null)
@@ -60,13 +61,13 @@ namespace Z_Marked.Services
 
         }
 
-        public User Read(int userid)
+        public User ReadUser(int userid)
         {
             return _userList.Find(u => u.UserID == userid)!;
 
         }
 
-        public User Read(string username)
+        public User ReadUser(string username)
         {
             User? user = _userList.Find(u => u.UserName == username);
             if (user == null)
@@ -76,17 +77,17 @@ namespace Z_Marked.Services
             return user;
         }
 
-        public bool IsValidLogin(string username, string password)
+        public User GetUser(string username, string password)
         {
-            User? usr = _userList.Find(u => u.UserName == username);
-            if (usr == null)
+            User? user = _userList.Find(u => u.UserName == username && u.Password == password);
+            if (user == null)
             {
-                throw new NullReferenceException("No user found with that username");
+                throw new WrongCredentialsException();
             }
-            return password == usr.Password;
+            return user;
         }
 
-        public User CurrentUser { get; set; } = null;
+
 
         public override string ToString()
         {

@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Z_Marked.Exceptions;
+using Z_Marked.Model;
 using Z_Marked.Services;
 
 namespace Z_Marked.Pages.UserFiles.Logins
@@ -7,7 +9,7 @@ namespace Z_Marked.Pages.UserFiles.Logins
     [BindProperties]
     public class LoginModel : PageModel
     {
-        private IUserSource _repo; 
+        private IUserSource _repo;
         public LoginModel(IUserSource repo)
         {
             _repo = repo;
@@ -20,10 +22,14 @@ namespace Z_Marked.Pages.UserFiles.Logins
 
         public IActionResult OnPost()
         {
-            if (_repo.IsValidLogin(UserName, Password))
+            //TODO: Change to session
+            User user = _repo.GetUser(UserName, Password);
+            if (user == null)
             {
-                _repo.CurrentUser = _repo.Read(UserName); 
+                throw new WrongCredentialsException();
             }
+            SessionHelper.Set(user, HttpContext);
+        
             return RedirectToPage("/Index");
         }
     }

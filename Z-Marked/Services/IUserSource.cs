@@ -4,15 +4,12 @@ namespace Z_Marked.Services
 {
     public interface IUserSource
     {
-        User CurrentUser { get; set; }
-
-        void Add(User user);
+        void AddUser(User user);
         List<User> GetAllUsers();
-        bool IsValidLogin(string username, string password);
-        User Read(int userid);
-        User Read(string username);
-        void Remove(User user);
-        string ToString();
-        void Update(int idx, User user);
+        User GetUser(string username, string password);
+        User ReadUser(int userid);
+        User ReadUser(string username);
+        void RemoveUser(User user);
+        void UpdateUser(int idx, User user);
     }
 }

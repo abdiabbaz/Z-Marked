@@ -15,7 +15,7 @@ namespace Z_Marked.Model
 
         public User() : this("", "", "", "", 0) { }
 
-        public string UserName { get; private set; }
+        public string UserName { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Z_Marked.Model;
 using Z_Marked.Services;
 
 namespace Z_Marked.Pages.UserFiles.Logins
@@ -18,7 +19,9 @@ namespace Z_Marked.Pages.UserFiles.Logins
         public IActionResult OnPostLog(bool logud) { 
             if (logud)
             {
-                _repo.CurrentUser = null;
+                User user = null!;
+                SessionHelper.Get(user, HttpContext);
+                SessionHelper.Clear(user, HttpContext);
                 return Redirect("~/"); 
             }
             return Redirect("~/");

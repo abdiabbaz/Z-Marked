@@ -13,12 +13,17 @@ html {
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+    background-color: #F5A623;
 }
 
+header {
+    background-color: #9B9B9B;
+}
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #4A90E2;
 }
 
 
