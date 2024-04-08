@@ -21,5 +21,7 @@ namespace Z_Marked.Pages.OrderFiles
             Items = _order.GetAllOrders();
             TotalAmount =_order.SumOfAllItems();
         }
+
+
     }
 }

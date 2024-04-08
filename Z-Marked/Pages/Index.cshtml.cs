@@ -22,7 +22,7 @@ namespace Z_Marked.Pages
             _logger = logger;
             Repo = repo;
             _itemRepo = itemRepo;
-            _order = order; 
+            _order = order;
         }
 
         public IActionResult OnPost(int itemId, int quantity)
@@ -42,7 +42,7 @@ namespace Z_Marked.Pages
         }
 
 
-        public IActionResult OnPostGoTillCart() 
+        public IActionResult OnPostGoTillCart()
         {
             return RedirectToPage("OrderFiles/OrderPage");
 

@@ -17,6 +17,11 @@
             _itemsList.Add(item);
         }
 
+        public void RemoveItem(Item item)
+        {
+            _itemsList.Remove(item);
+        }
+
         public double SumOfAllItems()
         {
             double sum = 0;

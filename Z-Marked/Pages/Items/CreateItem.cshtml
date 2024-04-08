@@ -1,0 +1,41 @@
+﻿@page
+@model Z_Marked.Pages.Items.IndexModel
+@{
+}
+<h1>Ny vare</h1>
+
+
+<form method="post" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <label asp-for="Id" class="control-label"></label>
+        <input class="form-control" asp-for="Id" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input class="form-control" asp-for="Name" />
+    </div>
+        <div class="form-group">
+        <label asp-for="Price" class="control-label"></label>
+        <input class="form-control" asp-for="Price" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Category" class="control-label"></label>
+        <input class="form-control" asp-for="Category" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <input class="form-control" asp-for="Description" />
+    </div>
+    <div class="form-group">
+        <label asp-for="NutritionalContent" class="control-label"></label>
+        <input class="form-control" asp-for="NutritionalContent" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Imagepath" class="control-label"></label>
+        <input class="form-control" type="file" accept="image/*" asp-for="ImageFile" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Tilføj til sortiment" class="btn btn-success" />
+    </div>
+</form>
