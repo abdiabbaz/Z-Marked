@@ -1,11 +1,45 @@
-﻿namespace Z_Marked.Model
+﻿using Z_Lib.Exceptions;
+
+namespace Z_Marked.Model
 {
     public class Item
     {
-        public int Id { get; set; }
-        public string? Name { get; set; }
+        public int Id
+        {
+            get => Id;
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Supplied ID is illegal");
+                }
+                Id = value;
+            }
+        }
+        public string? Name
+        {
+            get => Name;
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new IllegalNameException();
+                }
+                Name = value;
+            }
+        }
 
-        public double Price { get; set; }
+        public double Price
+        {
+            get => Price;
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new IllegalPriceException(value); 
+                }
+            }
+        }
         public string? Category { get; set; }
 
         public string? Description { get; set; }

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -12,6 +12,10 @@
     <Content Remove="Pages\ItemFiles\**" />
     <EmbeddedResource Remove="Pages\ItemFiles\**" />
     <None Remove="Pages\ItemFiles\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Z-Lib\Z-Lib.csproj" />
   </ItemGroup>
 
 </Project>

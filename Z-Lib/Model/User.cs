@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Configuration.UserSecrets;
-
-namespace Z_Marked.Model
+﻿namespace Z_Marked.Model
 {
     public class User
     {
