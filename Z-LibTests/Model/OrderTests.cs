@@ -6,10 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Z_Marked.Model.Tests
 {
     [TestClass()]
+    [ExcludeFromCodeCoverage]
     public class OrderTests : IComparer 
     {
         Order order; 

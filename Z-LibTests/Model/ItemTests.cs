@@ -9,10 +9,12 @@ using Z_Marked.Services;
 using Z_Lib.Exceptions;
 using System.Diagnostics;
 using System.Xml.Linq;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Z_Marked.Model.Tests
 {
     [TestClass()]
+    [ExcludeFromCodeCoverage]
     public class ItemTests
     {
         private Item _item;
@@ -63,8 +65,8 @@ namespace Z_Marked.Model.Tests
         [DataRow(null)]
         public void TestIllegalAndNullName(string input)
         {
-            Assert.ThrowsException<IllegalStringValue>(() => _item.Name = input);
-            Assert.ThrowsException<IllegalStringValue>(() => _dummyItem.Name = input);
+            Assert.ThrowsException<IllegalStringValueException>(() => _item.Name = input);
+            Assert.ThrowsException<IllegalStringValueException>(() => _dummyItem.Name = input);
         }
 
         //Price property
@@ -113,8 +115,8 @@ namespace Z_Marked.Model.Tests
         [DataRow("")]
         public void TestIllegalCategory(string input)
         {
-            Assert.ThrowsException<IllegalStringValue>(() => _item.Category = input);
-            Assert.ThrowsException<IllegalStringValue>(() => _dummyItem.Category = input);
+            Assert.ThrowsException<IllegalStringValueException>(() => _item.Category = input);
+            Assert.ThrowsException<IllegalStringValueException>(() => _dummyItem.Category = input);
         }
 
         //Description property
@@ -136,8 +138,8 @@ namespace Z_Marked.Model.Tests
         [DataRow("")]
         public void TestIllegalDescription(string input)
         {
-            Assert.ThrowsException<IllegalStringValue>(() => _item.Description = input);
-            Assert.ThrowsException<IllegalStringValue>(() => _dummyItem.Description = input);
+            Assert.ThrowsException<IllegalStringValueException>(() => _item.Description = input);
+            Assert.ThrowsException<IllegalStringValueException>(() => _dummyItem.Description = input);
         }
 
         //NutritionalContent property
@@ -159,8 +161,8 @@ namespace Z_Marked.Model.Tests
         [DataRow("")]
         public void TestIllegalNutritionalContent(string input)
         {
-            Assert.ThrowsException<IllegalStringValue>(() => _item.NutritionalContent = input);
-            Assert.ThrowsException<IllegalStringValue>(() => _dummyItem.NutritionalContent = input);
+            Assert.ThrowsException<IllegalStringValueException>(() => _item.NutritionalContent = input);
+            Assert.ThrowsException<IllegalStringValueException>(() => _dummyItem.NutritionalContent = input);
         }
 
         //ImagePath property
@@ -182,8 +184,8 @@ namespace Z_Marked.Model.Tests
         [DataRow("")]
         public void TestIllegalImagePath(string input)
         {
-            Assert.ThrowsException<IllegalStringValue>(() => _item.ImagePath = input);
-            Assert.ThrowsException<IllegalStringValue>(() => _dummyItem.ImagePath = input);
+            Assert.ThrowsException<IllegalStringValueException>(() => _item.ImagePath = input);
+            Assert.ThrowsException<IllegalStringValueException>(() => _dummyItem.ImagePath = input);
         }
 
         //ToString()
