@@ -18,7 +18,7 @@ namespace Z_Marked.Pages.OrderFiles
 
         public void OnGet()
         {
-            Items = _order.GetAllOrders();
+            Items = _order.GetAllOrderItems();
             TotalAmount =_order.SumOfAllItems();
         }
     }
