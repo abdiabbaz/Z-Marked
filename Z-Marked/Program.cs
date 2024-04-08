@@ -8,6 +8,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddSingleton<IUserSource>(new UserRepo(true));
 builder.Services.AddSingleton<IItemRepo>(new ItemRepo());
 builder.Services.AddSingleton(new Order());
+builder.Services.AddSession();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -18,6 +19,7 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession();
 
 app.UseAuthorization();
 

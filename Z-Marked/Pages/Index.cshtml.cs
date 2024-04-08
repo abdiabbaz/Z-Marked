@@ -27,7 +27,7 @@ namespace Z_Marked.Pages
 
         public IActionResult OnPost(int itemId, int quantity)
         {
-            var item = _itemRepo.GetItem(itemId);
+            Item item = _itemRepo.GetItem(itemId);
             for (int i = 0; i < quantity; i++)
             {
                 AddItemToCart(item);
