@@ -45,7 +45,7 @@ namespace Z_Marked.Model
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new IllegalStringValue();
+                    throw new IllegalStringValueException();
                 }
                 _name = value;
             }
@@ -69,7 +69,7 @@ namespace Z_Marked.Model
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new IllegalStringValue();
+                    throw new IllegalStringValueException();
                 }
                 _category = value;
             }
@@ -81,7 +81,7 @@ namespace Z_Marked.Model
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new IllegalStringValue();
+                    throw new IllegalStringValueException();
                 }
                 _description = value;
             }
@@ -93,7 +93,7 @@ namespace Z_Marked.Model
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new IllegalStringValue();
+                    throw new IllegalStringValueException();
                 }
                 _nutritionalContent = value;
             }
@@ -105,7 +105,7 @@ namespace Z_Marked.Model
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new IllegalStringValue();
+                    throw new IllegalStringValueException();
                 }
                 _imagePath = value;
             }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Z_Lib.Exceptions
 {
-    public class IllegalStringValue : ArgumentNullException
+    public class IllegalStringValueException : ArgumentNullException
     {
-        public IllegalStringValue() : base ("Empty or null name supplied, please enter a non-empty value"){}
+        public IllegalStringValueException() : base ("Empty or null name supplied, please enter a non-empty value"){}
 
         public override string Message => base.Message;
     }
