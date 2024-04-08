@@ -22,12 +22,12 @@
             double sum = 0;
             foreach( Item item in _itemsList)
             {
-                sum = sum + item.Price;
+                sum += item.Price;
             }
             return sum;
         }
 
-        public List<Item> GetAllOrders()
+        public List<Item> GetAllOrderItems()
         {
             return _itemsList;
         }
