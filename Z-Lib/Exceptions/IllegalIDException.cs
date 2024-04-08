@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Z_Lib.Exceptions
 {
-    public class IllegalNameException : ArgumentNullException
+    public class IllegalIDException : ArgumentException
     {
-        public IllegalNameException() : base ("Empty or null name supplied, please enter a name"){}
-
+        public IllegalIDException(string message) : base(message) { }
         public override string Message => base.Message;
     }
 }
