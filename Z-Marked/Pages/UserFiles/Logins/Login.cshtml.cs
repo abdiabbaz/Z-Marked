@@ -22,13 +22,17 @@ namespace Z_Marked.Pages.UserFiles.Logins
 
         public IActionResult OnPost()
         {
+            User user = null; 
             //TODO: Change to session
-            User user = _repo.GetUser(UserName, Password);
-            if (user == null)
+            try
             {
-                throw new WrongCredentialsException();
+                user = _repo.GetUser(UserName, Password);
+                SessionHelper.Set(user, HttpContext);
+            } catch (WrongCredentialsException e) {
+                return RedirectToPage("/Index");
             }
-            SessionHelper.Set(user, HttpContext);
+            
+            
         
             return RedirectToPage("/Index");
         }

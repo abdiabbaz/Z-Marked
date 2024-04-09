@@ -11,7 +11,7 @@ namespace Z_Marked.Services
             _items = MockItems.GetMockItems();
             
         }
-        public Item Create(Item item)
+        public Item AddItem(Item item)
         {
             _items.Add(item);
             return item;
@@ -40,7 +40,7 @@ namespace Z_Marked.Services
             existingItem.Name = item.Name;
             existingItem.Description = item.Description;
             existingItem.NutritionalContent = item.NutritionalContent;
-            existingItem.Imagepath = item.Imagepath;
+            existingItem.ImagePath = item.ImagePath;
 
             return existingItem;
         }

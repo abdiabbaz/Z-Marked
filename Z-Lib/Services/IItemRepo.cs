@@ -4,7 +4,7 @@ namespace Z_Marked.Services
 {
     public interface IItemRepo
     {
-        Item Create(Item item);
+        Item AddItem(Item item);
         Item Delete(Item item);
         Item GetItem(int id);
         string ToString();
