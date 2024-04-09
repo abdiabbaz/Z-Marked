@@ -29,7 +29,7 @@ namespace Z_Marked.Pages.Items
         [BindProperty]
         public string? NutritionalContent { get; set; }
         [BindProperty]
-        public string? Imagepath { get; set; }
+        public string? Picture { get; set; }
         [BindProperty]
         public IFormFile ImageFile { get; set; }
 
@@ -43,14 +43,14 @@ namespace Z_Marked.Pages.Items
                 {
                     Directory.CreateDirectory(folderPath);
                 }
-                Imagepath = ImageFile.FileName;
+                Picture = ImageFile.FileName;
                 using (var fileStream = new FileStream(Path.Combine(folderPath, ImageFile.FileName), FileMode.Create))
                 {
                     await ImageFile.CopyToAsync(fileStream);
 
                 }
             }
-            var Photo = $"/Uploads/{Imagepath}";
+            var Photo = $"/Uploads/{Picture}";
 
             var food = new Item(Id, Name, Price, Description, Category, NutritionalContent, Photo);
 
