@@ -17,6 +17,8 @@
             _itemsList.Add(item);
         }
 
+
+
         public double SumOfAllItems()
         {
             double sum = 0;
