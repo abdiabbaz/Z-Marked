@@ -54,7 +54,7 @@ namespace Z_Marked.Pages.Items
 
             var food = new Item(Id, Name, Price, Description, Category, NutritionalContent, Photo);
 
-             _itemRepo.Create(food);
+             _itemRepo.AddItem(food);
             return RedirectToPage("/Index");
         }
 
