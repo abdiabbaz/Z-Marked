@@ -17,19 +17,22 @@
                 <th>Varer</th>
                 <th>Navn</th>
                 <th>Pris</th>
+                <th>Antal</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (Model.Item item in Model.Items)
+            @foreach (var item in Model.ItemsPerPage)
             {
                 <tr>
                     <td>
-                        <img style="height:80px;" src="@item.ImagePath" />
+                        <img style="height:80px;" src="@item.Key.ImagePath" />
                     </td>
-                    <td>@item.Name</td>
-                    <td>@item.Price Kr.</td>
-                </tr>
+                    <td>@item.Key.Name</td>
+                    <td>@item.Key.Price Kr.</td>
+                        <td>@item.Value</td>
+                    </tr>
             }
+                
         </tbody>
     </table>
     </div>

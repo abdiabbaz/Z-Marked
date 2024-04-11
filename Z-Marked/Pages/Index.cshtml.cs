@@ -13,6 +13,7 @@ namespace Z_Marked.Pages
         private readonly Order _order;
 
 
+
         //[BindProperty] - Problemer med denne
         public IUserSource Repo;
         public List<Item> Items { get; set; }
@@ -31,15 +32,15 @@ namespace Z_Marked.Pages
             Item item = _itemRepo.GetItem(itemId);
             for (int i = 0; i < quantity; i++)
             {
-                AddItemToCart(item);
+                AddItemToCart(item, i);
             }
 
             return RedirectToPage();
         }
 
-        public void AddItemToCart(Item item)
+        public void AddItemToCart(Item item, int i)
         {
-            _order.AddItem(item);
+            _order.AddItemsToDic(item,i);
         }
 
 

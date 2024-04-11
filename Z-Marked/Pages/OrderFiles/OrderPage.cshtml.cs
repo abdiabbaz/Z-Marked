@@ -14,12 +14,13 @@ namespace Z_Marked.Pages.OrderFiles
         }
 
         public double TotalAmount { get; set; }
-        public List<Item> Items { get; set; }
+
+        public Dictionary<Item,int> ItemsPerPage { get; set; }
 
         public void OnGet()
         {
-            Items = _order.GetAllOrderItems();
-            TotalAmount =_order.SumOfAllItems();
+            ItemsPerPage = _order.GetItemsDictionary();
+            TotalAmount =_order.SumOfAllItemsDic();
         }
 
 
