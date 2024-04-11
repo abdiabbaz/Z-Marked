@@ -2,7 +2,7 @@
 
 namespace Z_Marked.Services
 {
-    public class ItemRepo : IItemRepo
+    public class ItemRepo : IItemSource
     {
         private List<Item> _items;
 

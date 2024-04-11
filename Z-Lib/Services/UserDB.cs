@@ -145,7 +145,7 @@ namespace Z_Lib.Services
             }
         }
 
-        public void UpdateUser(int idx, User user)
+        public void UpdateUser(int id, User user)
         {
             string query = "update Z_User set UserName = @pUsername, " +
                 "Codeword = @pPassword, " +
@@ -157,13 +157,17 @@ namespace Z_Lib.Services
                 connection.Open();
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue($"@pUsername", user.UserName);
+                cmd.Parameters.AddWithValue($"@pPassword", user.Password);
+                cmd.Parameters.AddWithValue($"@pEmail", user.Email);
+                cmd.Parameters.AddWithValue($"@pPhone", user.PhoneNumber);
+                cmd.Parameters.AddWithValue($"@pID", id);
 
                 int rowsAffected = cmd.ExecuteNonQuery();
                 Console.WriteLine($"Rows affected: {rowsAffected}");
             }
             if (user == null)
             {
-                throw new DBException(idx);
+                throw new DBException(id);
             }
             
         }
