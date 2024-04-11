@@ -2,7 +2,7 @@
 
 namespace Z_Marked.Services
 {
-    public interface IItemRepo
+    public interface IItemSource
     {
         Item AddItem(Item item);
         Item Delete(Item item);

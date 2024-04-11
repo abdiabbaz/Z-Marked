@@ -8,9 +8,9 @@ namespace Z_Marked.Pages.Items
 {
     public class IndexModel : PageModel
     {
-        private readonly IItemRepo _itemRepo;
+        private readonly IItemSource _itemRepo;
 
-        public IndexModel(IItemRepo repo)
+        public IndexModel(IItemSource repo)
         {
             _itemRepo = repo;
         }

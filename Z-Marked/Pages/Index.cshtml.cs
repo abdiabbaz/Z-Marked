@@ -9,7 +9,7 @@ namespace Z_Marked.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private readonly IItemRepo _itemRepo;
+        private readonly IItemSource _itemRepo;
         private readonly Order _order;
 
 
@@ -18,7 +18,7 @@ namespace Z_Marked.Pages
         public List<Item> Items { get; set; }
 
 
-        public IndexModel(ILogger<IndexModel> logger, IUserSource repo, IItemRepo itemRepo, Order order)
+        public IndexModel(ILogger<IndexModel> logger, IUserSource repo, IItemSource itemRepo, Order order)
         {
             _logger = logger;
             Repo = repo;
