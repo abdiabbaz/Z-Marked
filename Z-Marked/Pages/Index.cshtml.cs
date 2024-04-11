@@ -30,19 +30,9 @@ namespace Z_Marked.Pages
         public IActionResult OnPost(int itemId, int quantity)
         {
             Item item = _itemRepo.GetItem(itemId);
-            for (int i = 0; i < quantity; i++)
-            {
-                AddItemToCart(item, i);
-            }
-
+            _order.AddItemsToDic(item, quantity);
             return RedirectToPage();
         }
-
-        public void AddItemToCart(Item item, int i)
-        {
-            _order.AddItemsToDic(item,i);
-        }
-
 
         public IActionResult OnPostGoTillCart()
         {

@@ -5,6 +5,9 @@
         private List<Item> _itemsList;
         private Dictionary<Item, int> _itemsDictionary;
 
+        public Dictionary<Item, int> ItemsPerPage { get; private set; }
+
+
         public Order()
         {
             _itemsList = new List<Item>();
@@ -22,7 +25,7 @@
         {
             if (_itemsDictionary.ContainsKey(item))
             {
-                _itemsDictionary[item] += quantity;
+                _itemsDictionary[item] = _itemsDictionary[item] + quantity;
             }
             else
             {
@@ -30,15 +33,31 @@
             }
         }
 
-        public void RemoveItemFromDic(Item item)
+        public void RemoveItem(Item item, int quantityToRemove)
         {
-            _itemsDictionary.Remove(item);
+            if (_itemsDictionary.ContainsKey(item))
+            {
+                _itemsDictionary[item] = _itemsDictionary[item] - quantityToRemove;
+                if (_itemsDictionary[item] <= 0)
+                {
+                    _itemsDictionary.Remove(item);
+                }
+            }
         }
 
-        public void RemoveItem(Item item)
+
+        public Item? GetItemById(int id)
         {
-            _itemsList.Remove(item);
+            foreach (var item in _itemsDictionary.Keys)
+            {
+                if (item.Id == id)
+                {
+                    return item;
+                }
+            }
+            return null;
         }
+
 
         public double SumOfAllItems()
         {
@@ -53,18 +72,12 @@
         public double SumOfAllItemsDic()
         {
             double sum = 0;
-            foreach (var kvp in _itemsDictionary)
+            foreach (var items in _itemsDictionary)
             {
-                double itemTotal = kvp.Key.Price * kvp.Value;
+                double itemTotal = items.Key.Price * items.Value;
                 sum += itemTotal;
             }
             return sum;
-        }
-
-
-        public List<Item> GetAllOrderItems()
-        {
-            return _itemsList;
         }
 
         public Dictionary<Item,int> GetItemsDictionary()

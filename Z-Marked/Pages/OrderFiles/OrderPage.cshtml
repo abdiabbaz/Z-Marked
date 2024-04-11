@@ -18,10 +18,11 @@
                 <th>Navn</th>
                 <th>Pris</th>
                 <th>Antal</th>
+                <th>Handling</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.ItemsPerPage)
+            @foreach (KeyValuePair<Model.Item,int> item in Model.ItemsPerPage)
             {
                 <tr>
                     <td>
@@ -30,6 +31,23 @@
                     <td>@item.Key.Name</td>
                     <td>@item.Key.Price Kr.</td>
                         <td>@item.Value</td>
+                        <td>
+                            <form method="post" asp-page-handler="SletKurv" asp-route-id="@item.Key.Id">
+                                <div class="form-group">
+                                    <label for="quantity-@item.Key.Id">Antal til sletning eller tilføjelse:</label>
+                                    <input type="number" name="random" min="1" value="1" class="form-control" id="quantity-@item.Key.Id">
+                                </div>
+                                <button type="submit" class="btn btn-danger">Slet</button>
+                            </form>
+
+                            <form method="post" asp-route-id="@item.Key.Id">
+                                <div class="form-group">
+                                <input type="number" name="quantity" value="1" min="1" class="form-control" />
+                                <input type="hidden" name="itemId" value="@item.Key.Id" />
+                                </div>
+                                <button type="submit" class="btn btn-success" style="margin-left: 0px;">Tilføj</button>
+                            </form>
+                        </td>
                     </tr>
             }
                 
