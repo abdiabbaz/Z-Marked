@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Z_Marked.Model;
 using Z_Marked.Services;
 
+
 namespace Z_Marked.Pages
 {
     public class IndexModel : PageModel
@@ -10,6 +11,7 @@ namespace Z_Marked.Pages
         private readonly ILogger<IndexModel> _logger;
         private readonly IItemRepo _itemRepo;
         private readonly Order _order;
+
 
 
         //[BindProperty] - Problemer med denne
@@ -22,27 +24,17 @@ namespace Z_Marked.Pages
             _logger = logger;
             Repo = repo;
             _itemRepo = itemRepo;
-            _order = order; 
+            _order = order;
         }
 
         public IActionResult OnPost(int itemId, int quantity)
         {
             Item item = _itemRepo.GetItem(itemId);
-            for (int i = 0; i < quantity; i++)
-            {
-                AddItemToCart(item);
-            }
-
+            _order.AddItemsToDic(item, quantity);
             return RedirectToPage();
         }
 
-        public void AddItemToCart(Item item)
-        {
-            _order.AddItem(item);
-        }
-
-
-        public IActionResult OnPostGoTillCart() 
+        public IActionResult OnPostGoTillCart()
         {
             return RedirectToPage("OrderFiles/OrderPage");
 
