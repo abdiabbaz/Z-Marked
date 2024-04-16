@@ -9,10 +9,12 @@ namespace Z_Marked.Pages.Items
     public class IndexModel : PageModel
     {
         private readonly IItemRepo _itemRepo;
+        private User user; 
 
         public IndexModel(IItemRepo repo)
         {
             _itemRepo = repo;
+
         }
 
         [BindProperty]
@@ -23,7 +25,7 @@ namespace Z_Marked.Pages.Items
 
         public double Price { get; set; }
         [BindProperty]
-        public string? Category { get; set; }
+        public string Category { get; set; }
         [BindProperty]
         public string? Description { get; set; }
         [BindProperty]
@@ -32,7 +34,8 @@ namespace Z_Marked.Pages.Items
         public string? Imagepath { get; set; }
         [BindProperty]
         public IFormFile ImageFile { get; set; }
-
+        
+        
 
         public async Task<IActionResult> OnPost()
         {
@@ -60,6 +63,8 @@ namespace Z_Marked.Pages.Items
 
         public void OnGet()
         {
+            
+            
         }
     }
 }
