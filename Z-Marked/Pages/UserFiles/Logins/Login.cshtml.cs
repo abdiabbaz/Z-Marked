@@ -26,6 +26,7 @@ namespace Z_Marked.Pages.UserFiles.Logins
             //TODO: Change to session
             try
             {
+
                 user = _repo.GetUser(UserName, Password);
                 SessionHelper.Set(user, HttpContext);
             } catch (WrongCredentialsException e) {
