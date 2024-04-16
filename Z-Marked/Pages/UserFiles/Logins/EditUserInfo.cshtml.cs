@@ -5,22 +5,29 @@ using Z_Marked.Services;
 
 namespace Z_Marked.Pages.UserFiles.Logins
 {
+    [BindProperties]
     public class EditUserInfoModel : PageModel
     {
         #region Instance fields
-        private UserRepo _userRepository;
-        public bool CanChange;
-        [BindProperty]
-        public string Phonenumber { get; set; }
-        [BindProperty]
-        public string Email { get; set; }
-        [BindProperty]
-        public string Username { get; set; }
-        [BindProperty]
-        public string Password { get; set; }
-        public bool ShowChanges = false;
+        private IUserSource _repo;
+        
     
         #endregion
+        public EditUserInfoModel(IUserSource repo)
+        {
+            _repo = repo; 
+        }
+
+        public bool CanChange;
+       
+        public string Phonenumber { get; set; }
+        
+        public string Email { get; set; }
+       
+        public string Username { get; set; }
+     
+        public string Password { get; set; }
+        public bool ShowChanges = false;
         public void OnGet()
         {
         }
@@ -57,6 +64,7 @@ namespace Z_Marked.Pages.UserFiles.Logins
             user.Password = Password;
             user.PhoneNumber = Phonenumber;
             ShowChanges = true;
+            _repo.UpdateUser(user.UserID, user); 
             return Page();
         }
 
