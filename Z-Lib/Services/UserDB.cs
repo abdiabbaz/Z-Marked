@@ -23,10 +23,10 @@ namespace Z_Lib.Services
             {
                 connection.Open();
                 SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("Username", user.UserName);
-                cmd.Parameters.AddWithValue("pPassword", user.Password);
-                cmd.Parameters.AddWithValue("pEmail", user.Email);
-                cmd.Parameters.AddWithValue("pPhoneNumber", user.PhoneNumber);
+                cmd.Parameters.AddWithValue("@pUsername", user.UserName);
+                cmd.Parameters.AddWithValue("@pPassword", user.Password);
+                cmd.Parameters.AddWithValue("@pEmail", user.Email);
+                cmd.Parameters.AddWithValue("@pPhoneNumber", user.PhoneNumber);
                 int fieldsUpdated = cmd.ExecuteNonQuery();
                 if (fieldsUpdated == 0)
                 {
