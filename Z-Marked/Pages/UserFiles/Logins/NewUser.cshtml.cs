@@ -19,7 +19,8 @@ namespace Z_Marked.Pages.UserFiles.Logins
         [StringLength(15, MinimumLength = 2)]
         public string UserName { get; set; }
         [Required(ErrorMessage = "Du skal taste et kodeord!")]
-        [StringLength(30, MinimumLength = 6, ErrorMessage = "Længden af kodeord skal være mindst 6 tegn.\n3 bogstaver (2 små, et stort) og 3 tal")]
+        [StringLength(30, MinimumLength = 7, ErrorMessage = "Længden af kodeord skal være mindst 7 tegn.")]
+        [RegularExpression("([A-ZÆØÅ]{1,}[a-zæøå]{3,}\\d{3,})|([a-zæøå]{1,}[A-ZÆØÅ]{1,}[a-zæøå]{2,}\\d{3,})|([a-zæøå]{2,}[A-ZÆØÅ]{1,}[a-zæøå]{1,}\\d{3,})|([a-zæøå]{3,}[A-ZÆØÅ]{1,}[a-zæøå]{0,}\\d{3,})", ErrorMessage = "4 bogstaver (3 små, 1 stort) og 3 tal")]
         public string Password
         {
             get => _password;
