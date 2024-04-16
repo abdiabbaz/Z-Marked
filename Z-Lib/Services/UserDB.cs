@@ -155,7 +155,7 @@ namespace Z_Lib.Services
                 "Codeword = @pPassword, " +
                 "Email = @pEmail, " +
                 "Phone = @pPhone" +
-                "where ID = @pID";
+                " where ID = @pID";
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
