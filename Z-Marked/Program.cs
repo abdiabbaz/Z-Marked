@@ -1,3 +1,4 @@
+using Z_Lib.Services;
 using Z_Marked.Model;
 using Z_Marked.Services;
 
@@ -5,8 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddSingleton<IUserSource>(new UserRepo(true));
-builder.Services.AddSingleton<IItemRepo>(new ItemRepo());
+builder.Services.AddSingleton<IUserSource>(new UserDB());
+builder.Services.AddSingleton<IItemSource>(new ItemDB());
 builder.Services.AddSingleton(new Order());
 builder.Services.AddSession();
 var app = builder.Build();
@@ -28,4 +29,3 @@ app.MapRazorPages();
 app.Run();
 
 
-// Abdi Abbas

@@ -5,9 +5,14 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Z-Marked", "Z-Marked\Z-Marked.csproj", "{09D175F6-95D2-434A-B7AD-56D71483CEDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z-Lib", "Z-Lib\Z-Lib.csproj", "{E56B48A2-3F5B-4932-945C-0A747EA93DF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Z-Lib", "Z-Lib\Z-Lib.csproj", "{E56B48A2-3F5B-4932-945C-0A747EA93DF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z-LibTests", "Z-LibTests\Z-LibTests.csproj", "{0E65CE5D-484B-4134-A6E3-AEF8626B695C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Z-LibTests", "Z-LibTests\Z-LibTests.csproj", "{0E65CE5D-484B-4134-A6E3-AEF8626B695C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CE73C7CD-1BD3-4350-AF3F-73C5F6E41482}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

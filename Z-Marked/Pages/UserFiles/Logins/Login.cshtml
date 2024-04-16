@@ -2,8 +2,10 @@
 @model Z_Marked.Pages.UserFiles.Logins.LoginModel
 @{
 }
-<form method="post">
+<form method="post" class="form-control">
     <input type="text" asp-for="UserName" placeholder="Type username here"/>
-    <input type="password" asp-for="Password" placeholder="Tpye password here"/> 
+    <input type="password" asp-for="Password" placeholder="Type password here"/>
+    <span class="alert-warning" asp-validation-for="Match"></span>
+    
     <input type="submit"/> 
 </form>

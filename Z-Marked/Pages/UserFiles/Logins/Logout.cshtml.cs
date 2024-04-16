@@ -16,6 +16,7 @@ namespace Z_Marked.Pages.UserFiles.Logins
         public void OnGet()
         {
         }
+
         public IActionResult OnPostLog(bool logud) { 
             if (logud)
             {

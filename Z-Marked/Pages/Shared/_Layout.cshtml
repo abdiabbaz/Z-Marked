@@ -10,7 +10,7 @@
     catch { }
 
 }
-
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,25 +40,35 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/UserFiles/Logins/Login">Log ind</a>
                             </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/UserFiles/Logins/Logout">Logget ind som @user.UserName</a>
-                            </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark">||</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/UserFiles/Logins/Logout">Log ud</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/UserFiles/Logins/NewUser">Opret ny bruger</a>
                             </li>
                         }
+                        else
+                        {
+                            @* Hvis bruger er logget ind her *@
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/UserFiles/Logins/Logout">Logget ind som @user.UserName ― Log ud</a>
+                            </li>
+                            
+                            if (user.UserName == "Admin")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/Items/CreateItem">Opret vare</a>
+                                </li>
+                            }
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/UserFiles/Logins/EditUserInfo">Min Profil</a>
+                            </li>
+                        }
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Items/CreateItem">Opret vare</a>
-                        </li>
+                        
                     </ul>
                 </div>
             </div>

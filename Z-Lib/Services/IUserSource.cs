@@ -6,7 +6,7 @@ namespace Z_Marked.Services
     {
         void AddUser(User user);
         List<User> GetAllUsers();
-        User GetUser(string username, string password);
+        User? GetUser(string username, string password);
         User ReadUser(int userid);
         User ReadUser(string username);
         void RemoveUser(User user);

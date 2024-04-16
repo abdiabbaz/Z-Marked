@@ -10,8 +10,8 @@ namespace Z_Marked.Pages.Items
     [BindProperties]
     public class DeleteConfirmationModel : PageModel
     {
-        private IItemRepo _repo; 
-        public DeleteConfirmationModel(IItemRepo repo)
+        private IItemSource _repo; 
+        public DeleteConfirmationModel(IItemSource repo)
         {
             _repo = repo;
         }
