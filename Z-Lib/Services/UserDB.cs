@@ -64,7 +64,7 @@ namespace Z_Lib.Services
             return new User(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetInt32(0));
         }
 
-        public User GetUser(string username, string password)
+        public User? GetUser(string username, string password)
         {
             User? user = null;
             string query = "select * from Z_User where UserName like @pName and Codeword like @pPassword";
@@ -73,16 +73,20 @@ namespace Z_Lib.Services
                 connection.Open();
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@pName", username);
-                cmd.Parameters.AddWithValue("@pPassword", password);
+                if (password == null)
+                {
+                    cmd.Parameters.AddWithValue("@pPassword", "nullpassword!123");
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@pPassword", password);
+                }
+                
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
                     user = ReadUserFromDB(reader);
                 }
-            }
-            if (user == null)
-            {
-                throw new UserNotFoundException(username, password);
             }
             return user; 
         }
