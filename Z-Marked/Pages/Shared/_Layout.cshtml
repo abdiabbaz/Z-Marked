@@ -49,6 +49,7 @@
                         }
                         else
                         {
+                            @* Hvis bruger er logget ind her *@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/UserFiles/Logins/Logout">Logget ind som @user.UserName ― Log ud</a>
                             </li>
@@ -64,9 +65,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Items/CreateItem">Opret vare</a>
-                        </li>
+                        
                     </ul>
                 </div>
             </div>
