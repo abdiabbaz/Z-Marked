@@ -1,0 +1,33 @@
+﻿@page
+@using Z_Lib.Exceptions
+@using Z_Marked.Exceptions
+@model Z_Marked.Pages.UserFiles.Logins.NewUserModel
+@{
+}
+<form method="post">
+    <div class="form-group">
+
+        <label class="form-label" asp-for="UserName">Brugernavn</label>
+        <input type="text" class="form-control" placeholder="Indtast brugernavn" asp-for="UserName" />
+        <span class="text-warning" asp-validation-for="UserName"></span>
+    </div>
+    <div class="form-group">
+            <label class="form-label" asp-for="Password">Kodeord -> Mindst 1 stort bogstav, 3 små og 3 tal</label>
+        <input type="password" class="form-control" placeholder="Indtast kodeord" asp-for="Password" />
+        <span class="text-warning" asp-validation-for="Password"></span>
+    </div>
+    <div class="form-group">
+        <label class="form-label" asp-for="Email">Email</label>
+        <input type="email" class="form-control" placeholder="Indtast email" asp-for="Email" />
+        <span class="text-warning" asp-validation-for="Email"></span>
+    </div>
+    <div class="form-group">
+        <label class="form-label" asp-for="PhoneNumber">Telefon-nummer</label>
+        <input type="text" class="form-control" placeholder="Indtast telefon-nummer" asp-for="PhoneNumber" />
+        <span class="text-warning" asp-validation-for="PhoneNumber"></span>
+    </div>
+    <button class="accordion-button" type="submit">Opret login</button>
+    </form>
+
+
+
