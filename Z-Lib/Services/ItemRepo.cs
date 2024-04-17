@@ -2,7 +2,7 @@
 
 namespace Z_Marked.Services
 {
-    public class ItemRepo : IItemRepo
+    public class ItemRepo : IItemSource
     {
         private List<Item> _items;
 
@@ -46,6 +46,7 @@ namespace Z_Marked.Services
         }
 
         public List<Item> GetItems() { return _items; }
+
 
         public override string ToString()
         {

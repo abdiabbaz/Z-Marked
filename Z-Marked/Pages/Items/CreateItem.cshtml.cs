@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Z_Lib.Model;
 using Z_Marked.Model;
 using Z_Marked.Services;
 using static System.Net.Mime.MediaTypeNames;
@@ -8,11 +9,12 @@ namespace Z_Marked.Pages.Items
 {
     public class IndexModel : PageModel
     {
-        private readonly IItemRepo _itemRepo;
+        private readonly IItemSource _itemRepo;
 
-        public IndexModel(IItemRepo repo)
+        public IndexModel(IItemSource repo)
         {
             _itemRepo = repo;
+
         }
 
         [BindProperty]
@@ -23,7 +25,7 @@ namespace Z_Marked.Pages.Items
 
         public double Price { get; set; }
         [BindProperty]
-        public string? Category { get; set; }
+        public string Category { get; set; }
         [BindProperty]
         public string? Description { get; set; }
         [BindProperty]
@@ -32,7 +34,8 @@ namespace Z_Marked.Pages.Items
         public string? Picture { get; set; }
         [BindProperty]
         public IFormFile ImageFile { get; set; }
-
+        [BindProperty]
+        public List<ItemCategory.Category> Categories { get; set; }
 
         public async Task<IActionResult> OnPost()
         {
@@ -60,6 +63,8 @@ namespace Z_Marked.Pages.Items
 
         public void OnGet()
         {
+            Categories = Enum.GetValues<ItemCategory.Category>().ToList();
+
         }
     }
 }

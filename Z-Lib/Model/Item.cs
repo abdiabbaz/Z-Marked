@@ -1,5 +1,6 @@
 ﻿using System.Net.NetworkInformation;
 using Z_Lib.Exceptions;
+using Z_Lib.Model;
 
 namespace Z_Marked.Model
 {
@@ -63,16 +64,11 @@ namespace Z_Marked.Model
                 _price = value;
             }
         }
+
         public string Category
         {
-            get => _category; set
-            {
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new IllegalStringValueException();
-                }
-                _category = value;
-            }
+            get => _category;
+            set { _category = value; }
         }
 
         public string Description

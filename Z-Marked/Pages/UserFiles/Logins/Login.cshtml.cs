@@ -1,14 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Z_Marked.Exceptions;
+using System.ComponentModel.DataAnnotations;
 using Z_Marked.Model;
 using Z_Marked.Services;
 
 namespace Z_Marked.Pages.UserFiles.Logins
 {
     [BindProperties]
+
     public class LoginModel : PageModel
     {
+       
         private IUserSource _repo;
         public LoginModel(IUserSource repo)
         {
@@ -17,24 +19,31 @@ namespace Z_Marked.Pages.UserFiles.Logins
         public void OnGet()
         {
         }
+        [Required(ErrorMessage = "Brugernavn skal skrives")]
         public string UserName { get; set; }
+        [Required(ErrorMessage = "Kodeord skal skrives")]
+        [StringLength(100, MinimumLength = 7)]
         public string Password { get; set; }
+        [Required(ErrorMessage = "Ukendt login!")]
+        public bool Match { get; set; } = false;
 
         public IActionResult OnPost()
         {
-            User user = null; 
-            //TODO: Change to session
-            try
+            User user = _repo.GetUser(UserName, Password)!;
+            SessionHelper.Set(user, HttpContext);
+            if (user != null)
             {
-                user = _repo.GetUser(UserName, Password);
-                SessionHelper.Set(user, HttpContext);
-            } catch (WrongCredentialsException e) {
-                return RedirectToPage("/Index");
+                Match = true; 
+            } else
+            {
+                Match = false;
             }
-            
-            
-        
-            return RedirectToPage("/Index");
+            if (!ModelState.IsValid && user == null)
+            {
+                return Page(); 
+            }
+            return Redirect("~/");
+
         }
     }
 }

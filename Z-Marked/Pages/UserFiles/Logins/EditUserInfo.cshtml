@@ -1,0 +1,78 @@
+﻿@page
+@model Z_Marked.Pages.UserFiles.Logins.EditUserInfoModel
+@using Z_Marked.Model
+@{
+}
+@{
+    User? user = null;
+    try
+    {
+        user = SessionHelper.Get<User>(user, HttpContext);
+
+    }
+    catch { }
+
+}
+<div class="row">
+    <div class="col">
+        <div class="w-25 p-3" style="background-color: #eee; display:table-cell; border-radius:0.5rem;">
+            <h3>Bruger oplysinger</h3>
+            <table class="table">
+                <form method="post">
+                    <div class="form-group>">
+                            
+                        @if(Model.CanChange)
+                        {
+                            <label>Email</label>
+                            <input class="form-control" asp-for="@Model.Email">
+                            <br />
+
+                            <label>Username</label>
+                            <input class="form-control" asp-for="@Model.Username" />
+                            <br />
+
+                            <label>Password</label>
+                            <input class="form-control" asp-for="@Model.Password" />
+                            <br />
+
+                            <label>Phonenumber</label>
+                            <input class="form-control" asp-for="@Model.Phonenumber" />
+                            <br />
+
+                            <input type="submit" value="Gem ændringer" class="btn btn-success" asp-page-handler="Save">
+                            
+                            <input type="submit" value="Fortryd" class="btn btn-danger" asp-page-handler="RegretChanges">
+                        }
+                        else
+                        {
+                            <label>Email</label>
+                            <br />
+                            <input class="form-control" asp-for="@user.Email" type="email" disabled/>
+                            <br />
+
+                            <label>Username</label>
+                            <br />
+                            <input class="form-control" asp-for="@user.UserName" minlength="4" maxlength="20" disabled  />
+                            <br />
+
+                            <label>Password</label>
+                            <br />
+                            <input class="form-control" asp-for="@user.Password" minlength="4" maxlength="30" disabled />
+                            <br />
+
+                            <label>Phonenumber</label>
+                            <br />
+                            <input class="form-control" asp-for="@user.PhoneNumber" minlength="8" maxlength="8" disabled />
+                            <br />
+                            @if (Model.ShowChanges)
+                            {
+                                <span class="alert-success">Dine ændringer er blevet gemt</span><br />
+                            }
+                            <input type="submit" value="Ændre profil" class="btn btn-success" asp-page-handler="Change">
+                        }
+                    </div>
+                </form>
+            </table>
+        </div>
+    </div>
+</div>

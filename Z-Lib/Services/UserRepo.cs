@@ -15,11 +15,9 @@ namespace Z_Marked.Services
                 _userList.Add(new User("Anders", "Anders123", "anders@hotmail.com", "21212121", 1));
                 _userList.Add(new User("Svend", "Svend123", "svend@hotmail.com", "12121212", 2));
                 _userList.Add(new User("Kjeld", "Kjeld123", "kjeld@hotmail.com", "31313131", 3));
+                _userList.Add(new User("Admin", "Admin123", "admin@hotmail.com", "31313131", 4));
                 _userList.Add(new User());
                 _userList.Add(new User());
-                Console.WriteLine(_userList.Count);
-                Console.WriteLine(GetUser("Anders", "Anders123"));
-                Console.WriteLine(ToString());
             }
 
         }

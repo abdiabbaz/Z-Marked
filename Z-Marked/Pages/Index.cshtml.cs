@@ -9,8 +9,9 @@ namespace Z_Marked.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private readonly IItemRepo _itemRepo;
+        private readonly IItemSource _itemRepo;
         private readonly Order _order;
+
 
 
         //[BindProperty] - Problemer med denne
@@ -18,7 +19,7 @@ namespace Z_Marked.Pages
         public List<Item> Items { get; set; }
 
 
-        public IndexModel(ILogger<IndexModel> logger, IUserSource repo, IItemRepo itemRepo, Order order)
+        public IndexModel(ILogger<IndexModel> logger, IUserSource repo, IItemSource itemRepo, Order order)
         {
             _logger = logger;
             Repo = repo;
@@ -29,19 +30,9 @@ namespace Z_Marked.Pages
         public IActionResult OnPost(int itemId, int quantity)
         {
             Item item = _itemRepo.GetItem(itemId);
-            for (int i = 0; i < quantity; i++)
-            {
-                AddItemToCart(item);
-            }
-
+            _order.AddItemsToDic(item, quantity);
             return RedirectToPage();
         }
-
-        public void AddItemToCart(Item item)
-        {
-            _order.AddItem(item);
-        }
-
 
         public IActionResult OnPostGoTillCart()
         {

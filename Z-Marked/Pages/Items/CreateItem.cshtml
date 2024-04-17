@@ -1,7 +1,31 @@
 ﻿@page
+@using Z_Marked.Model
 @model Z_Marked.Pages.Items.IndexModel
+
 @{
+    User user = null!;
+    try
+    {
+        user = SessionHelper.Get<User>(user, HttpContext); 
+    }
+    catch
+    {  }
+
 }
+<head>
+    @if (user != null)
+    {
+        if (user.UserName != "Admin")
+        {
+            
+        }
+    }
+    else
+    {
+        <meta http-equiv="refresh" content="0; url=../../" />
+    }
+
+</head>
 <h1>Ny vare</h1>
 
 
@@ -11,25 +35,33 @@
         <label asp-for="Id" class="control-label"></label>
         <input class="form-control" asp-for="Id" />
     </div>
-    <div class="form-group">
+    <div>
         <label asp-for="Name" class="control-label"></label>
         <input class="form-control" asp-for="Name" />
     </div>
-        <div class="form-group">
+    <div class="form-group">
         <label asp-for="Price" class="control-label"></label>
         <input class="form-control" asp-for="Price" />
     </div>
-    <div class="form-group">
+    <div>
         <label asp-for="Category" class="control-label"></label>
-        <input class="form-control" asp-for="Category" />
+        <select asp-for="@Model.Category">
+            @foreach (var sortement in Model.Categories)
+            {
+                <option name="@sortement" value="@sortement">@sortement.ToString()</option>
+            }
+        </select>
     </div>
     <div class="form-group">
         <label asp-for="Description" class="control-label"></label>
         <input class="form-control" asp-for="Description" />
     </div>
-    <div class="form-group">
-        <label asp-for="NutritionalContent" class="control-label"></label>
-        <input class="form-control" asp-for="NutritionalContent" />
+    <div class="MakeBigger">
+        <div class="form-group">
+            <div></div>
+            <label asp-for="NutritionalContent" class="control-label"></label>
+            <input class="form-control" id="ItemInfo" asp-for="NutritionalContent" />
+        </div>
     </div>
     <div class="form-group">
         <label asp-for="Picture" class="control-label"></label>
