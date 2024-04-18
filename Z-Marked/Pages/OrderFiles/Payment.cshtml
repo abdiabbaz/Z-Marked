@@ -1,0 +1,43 @@
+﻿@page
+@model Z_Marked.Pages.OrderFiles.PaymentModel
+@{
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div id="payment" class="row" style="display: inline-flex">
+    <div id="payment" class="col-75">
+        <div id="payment" class="container">
+
+            <div id="payment" class="col-50" style="background-color: white; padding: 2rem; border-radius: 0.5rem;>
+                <h3>Payment</h3>
+                <label id="payment" for="fname">Accepted Cards</label>
+                <div class="icon-container">
+                    <i id="payment" class="fa fa-cc-visa" style="color:#7171e3;"></i>
+                    <i id="payment" class="fa fa-cc-amex" style="color:blue;"></i>
+                    <i id="payment" class="fa fa-cc-mastercard" style="color:red;"></i>
+                    <i id="payment" class="fa fa-cc-discover" style="color:orange;"></i>
+                </div>
+                <label id="payment" for="cname">Name on Card</label>
+                <input id="payment" type="text" id="cname" name="cardname" placeholder="Peter">
+                <label id="payment" for="ccnum">Credit card number</label>
+                <input id="payment" type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" minlength="16" maxlength="16">
+                <label id="payment" for="expmonth">Exp Month</label>
+                <input id="payment" type="text" id="expmonth" name="expmonth" placeholder="Example Marts">
+
+                <div id="payment" class="row">
+                    <div id="payment" class="col-50">
+                        <label id="payment" for="expyear">Exp Year</label>
+                        <input id="payment" type="text" id="expyear" name="expyear" placeholder="2023" minlength="4" maxlength="4">
+                    </div>
+
+                    <div id="payment" class="col-50">
+                        <label id="payment" for="cvv">CVV</label>
+                        <input id="payment" type="text" id="cvv" name="cvv" placeholder="123" minlength="3" maxlength="3">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <button type="button" class="btn btn-info">Pay</button>
