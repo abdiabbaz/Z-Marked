@@ -4,46 +4,75 @@
     ViewData["Title"] = "Home page";
 }
 
-<head>
-
-</head>
 
 <body>
-    <div class="container">
-    <form method="post" asp-page-handler="GoTillCart">
-            <div class="Cart">
-                <div>
-                    <input type="submit" value="Gå til kurv" class="btn btn-primary">
-                </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="m-3">
+                <label>Kategori:</label>
+                <form method="post" asp-page="./Index" asp-page-handler="Sort">
+                    <select name="category" class="form-control">
+                        @foreach (var cat in Model.Categories)
+                        {
+                            <option value="@cat">@cat</option>
+                        }
+                    </select>
+                    <button type="submit" class="btn btn-primary">Indsend</button>
+                </form>
+                <form method="post" asp-page="./Index" asp-page-handler="Reset">
+                    <button type="submit" class="btn btn-secondary">Vis Alle Varer</button>
+                </form>
             </div>
+            <form method="post" asp-page-handler="AddTillCart">
+                <div class="row">
+                    @foreach (var item in Model.Items)
+                    {
+                        <div class="col-md-3 mt-3">
+                            <div class="card h-100">
+                                <img src="@item.ImagePath" class="card-img-top" />
 
-    </form>
+                                <div class="card-body">
+                                    <p class="card-text"><strong>@item.Name</strong></p>
+                                    <div class="price">@item.Price,-</div>
+                                </div>
+                                <div class="card-footer">
 
-    <form method="post" asp-page-handler="AddTillCart">
-            <div class="row">
-                @foreach (var item in Model.Items)
-                {
-                    <div class="col-md-3 mt-5">
-                        <div class="card h-100">
-                            <img src="@item.ImagePath" class="card-img-top"/>
-
-                            <div class="card-body">
-                                <p class="card-text"><strong>@item.Name</strong></p>
-                                 <div class="price">@item.Price,-</div>
-                            </div>
-                            <div class="card-footer">
-
-                                <form method="post" asp-page-handler="SletKurv">
-                                    <input type="number" name="quantity" value="1" min="1" class="form-control" />
-                                    <input type="hidden" name="itemId" value="@item.Id" />
-                                    <button class="btn btn-success">Tilføj til kurv</button>
-                                </form>
+                                    <form method="post" asp-page-handler="SletKurv">
+                                        <input type="number" name="quantity" value="1" min="1" class="form-control" />
+                                        <input type="hidden" name="itemId" value="@item.Id" />
+                                        <button class="btn btn-success">Tilføj til kurv</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
+                    }
+                </div>
+            </form>
+
+        </div>
+        <div class="col-md-3 bg-white text-center" style="border-radius:6px">
+            <form method="post" asp-page-handler="GoTillCart" class="m-2">
+                <div class="Cart">
+                    <div>
+                        <input type="submit" value="Gå til kurv" class="btn btn-primary">
+                    </div>
+                </div>
+            </form>
+
+            <div class="card">
+                <div class="card-title">Indkøbskurv</div>
+                @foreach (var item in Model.ItemsPerPage)
+                {
+                    <div class="card-body">
+                       @item.Key.Price,- @item.Key.Name @item.Value x
                     </div>
                 }
+                <label>Samlet beløb:</label> @Model.Total
             </div>
-    </form>
+        </div>
+
+
     </div>
 
 </body>
