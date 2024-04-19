@@ -3,8 +3,6 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
-
 <body>
 
     <div class="row">
@@ -12,13 +10,14 @@
             <div class="m-3">
                 <label>Kategori:</label>
                 <form method="post" asp-page="./Index" asp-page-handler="Sort">
-                    <select name="category" class="form-control">
+                    <select name="category" onchange="this.form.submit()" class="form-control">
                         @foreach (var cat in Model.Categories)
                         {
                             <option value="@cat">@cat</option>
                         }
                     </select>
-                    <button type="submit" class="btn btn-primary">Indsend</button>
+                    @*                     <button type="submit" class="btn btn-primary">Indsend</button>
+                    *@
                 </form>
                 <form method="post" asp-page="./Index" asp-page-handler="Reset">
                     <button type="submit" class="btn btn-secondary">Vis Alle Varer</button>
@@ -34,7 +33,7 @@
 
                                 <div class="card-body">
                                     <p class="card-text"><strong>@item.Name</strong></p>
-                                    <div class="price">@item.Price,-</div>
+                                    <div class="price">@item.Price</div>
                                 </div>
                                 <div class="card-footer">
 
@@ -60,15 +59,29 @@
                 </div>
             </form>
 
-            <div class="card">
-                <div class="card-title">Indkøbskurv</div>
-                @foreach (var item in Model.ItemsPerPage)
-                {
-                    <div class="card-body">
-                       @item.Key.Price,- @item.Key.Name @item.Value x
+            <div class="col-8">
+                <div class="card" id="testing">
+                    <div class="card-title">Indkøbskurv</div>
+                    <div class="hejhej" style="align-items:flex-start;">
+                        @foreach (var item in Model.ItemsPerPage)
+                        {
+                            <div class="card-body" id="indkøbskurv">
+                                <div class="card">
+                                    <img id="billede" src="@item.Key.ImagePath" alt="Produktbillede">
+                                    <div class="item-details">
+                                        <span>@item.Key.Price,-</span>
+                                        <span>@item.Key.Name</span>
+                                        <span>@item.Value x</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
                     </div>
-                }
-                <label>Samlet beløb:</label> @Model.Total
+                    <div class="align-self-end">
+                        <label>Samlet beløb:</label> @Model.Total
+                    </div>
+                </div>
             </div>
         </div>
 

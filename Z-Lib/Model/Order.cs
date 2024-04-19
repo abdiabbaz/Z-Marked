@@ -1,4 +1,6 @@
-﻿namespace Z_Marked.Model
+﻿using System.Runtime.CompilerServices;
+
+namespace Z_Marked.Model
 {
     public class Order
     {
@@ -23,11 +25,17 @@
 
         public void AddItemsToDic(Item item, int quantity)
         {
-            if (_itemsDictionary.ContainsKey(item))
+            bool foundItemInDict = false;
+
+            foreach (var itemDic in _itemsDictionary.Keys)
             {
-                _itemsDictionary[item] = _itemsDictionary[item] + quantity;
+                if (itemDic.Id == item.Id)
+                {
+                    _itemsDictionary[itemDic] = _itemsDictionary[itemDic] + quantity;
+                    foundItemInDict = true;
+                }
             }
-            else
+            if (!foundItemInDict)
             {
                 _itemsDictionary.Add(item, quantity);
             }
@@ -80,7 +88,7 @@
             return sum;
         }
 
-        public Dictionary<Item,int> GetItemsDictionary()
+        public Dictionary<Item, int> GetItemsDictionary()
         {
             return _itemsDictionary;
         }

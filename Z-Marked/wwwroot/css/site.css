@@ -30,6 +30,7 @@ body {
 /*
     ALT CSS HER ER INDEX
 */
+.card id
 .card{
     max-width:180px;
     margin:10px;
@@ -84,3 +85,17 @@ b, strong{
 .Kurv {
     text-align: center;
 }
+
+#testing {
+    width: 380px;
+}
+
+#billede {
+    width: 100px; 
+    margin-right: 20px; 
+}
+
+.item-details {
+    display: flex;
+    align-items: center;
+    gap: 10px; 

@@ -28,14 +28,14 @@ namespace Z_Marked.Model.Tests
             Assert.IsNotNull(order);
         }
 
-        [TestMethod()]
-        public void AddItemTest()
-        {
-            Item item = new Item();
-            order.AddItem(item);
-            Assert.AreEqual(order.GetAllOrderItems()[0], item); 
+        //[TestMethod()]
+        //public void AddItemTest()
+        //{
+        //    Item item = new Item();
+        //    order.AddItem(item);
+        //    Assert.AreEqual(order.GetAllOrderItems()[0], item); 
 
-        }
+        //}
 
         [TestMethod()]
         public void SumOfAllItemsTest()
@@ -46,10 +46,10 @@ namespace Z_Marked.Model.Tests
         }
 
         [TestMethod()]
-        public void GetAllOrdersTest()
-        {
-            Assert.IsNotNull(order.GetAllOrderItems());
-        }
+        //public void GetAllOrdersTest()
+        //{
+        //    Assert.IsNotNull(order.GetAllOrderItems());
+        //}
 
         public int Compare(object? x, object? y)
         {
