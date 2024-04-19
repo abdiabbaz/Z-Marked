@@ -1,9 +1,17 @@
 ﻿@page
+@using Z_Marked.Model
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
-}
 
+    User? user = null;
+    try
+    {
+        user = SessionHelper.Get<User>
+    (user, HttpContext);
+    }
+    catch { }
+}
 <head>
 
 </head>
@@ -25,6 +33,14 @@
                 {
                     <div class="col-md-3 mt-5">
                         <div class="card h-100">
+                            <div class="col" style="display:flex;justify-content:end">
+                                    @if( user != null && user.UserName == "Admin")
+                                    {
+                                        <form method="post">
+                                            <button type="submit" class="btn btn-danger" asp-route-ItemID="@item.Id" asp-page-handler="SletItem">x</button>
+                                        </form>
+                                    }
+                            </div>
                             <img src="@item.ImagePath" class="card-img-top"/>
 
                             <div class="card-body">

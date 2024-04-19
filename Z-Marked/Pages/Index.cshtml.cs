@@ -40,6 +40,13 @@ namespace Z_Marked.Pages
 
         }
 
+        public IActionResult OnPostSletItem(int ItemID)
+        {
+            var item = _itemRepo.GetItem(ItemID);
+            _itemRepo.Delete(item);
+            return RedirectToPage("Index");
+        }
+
         public void OnGet()
         {
             Items = _itemRepo.GetItems();
