@@ -1,0 +1,67 @@
+﻿@page
+@using Z_Marked.Model
+@model Z_Marked.Pages.Items.EditItemModel
+@{
+    User user = null!;
+    try
+    {
+        user = SessionHelper.Get<User>(user, HttpContext);
+    }
+    catch
+    { }
+
+}
+<head>
+    @if (user != null)
+    {
+        if (user.UserName != "Admin")
+        {
+
+        }
+    }
+    else
+    {
+        <meta http-equiv="refresh" content="0; url=../../" />
+    }
+
+</head>
+<h1>Rediger vare</h1>
+
+
+<form method="post" enctype="multipart/form-data" asp-route-id="@Model.Id">
+
+    <div class="form-group">
+        <label asp-for="Id" class="control-label"></label>
+        <input class="form-control" disabled asp-for="Id" />
+    </div>
+    <div>
+        <label asp-for="Name" class="control-label"></label>
+        <input class="form-control" asp-for="Name" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Price" class="control-label"></label>
+        <input class="form-control" asp-for="Price" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Category" class="control-label"></label>
+        <input class="form-control" asp-for="Category" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <input class="form-control" asp-for="Description" />
+    </div>
+    <div class="MakeBigger">
+        <div class="form-group">
+            <div></div>
+            <label asp-for="NutritionalContent" class="control-label"></label>
+            <input class="form-control" id="ItemInfo" asp-for="NutritionalContent" />
+        </div>
+    </div>
+    
+    <img src="@Model.Picture" />
+    <input asp-for="Picture" hidden />
+    <div class="form-group">
+        <input type="submit" value="Opdater item" class="btn btn-success" />
+    </div>
+</form>
+

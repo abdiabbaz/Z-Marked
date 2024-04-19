@@ -1,7 +1,16 @@
 ﻿@page
 @model IndexModel
+@using Z_Lib.Model
+@using Z_Marked.Model
 @{
     ViewData["Title"] = "Home page";
+    User user = null!;
+    try
+    {
+        user = SessionHelper.Get<User>(user, HttpContext);
+    }
+    catch { }
+
 }
 
 <head>
@@ -10,27 +19,33 @@
 
 <body>
     <div class="container">
-    <form method="post" asp-page-handler="GoTillCart">
+        <form method="post" asp-page-handler="GoTillCart">
             <div class="Cart">
                 <div>
                     <input type="submit" value="Gå til kurv" class="btn btn-primary">
                 </div>
             </div>
 
-    </form>
+        </form>
+        <div class="row">
+            @foreach (var item in Model.Items)
+            {
+                <div class="col-md-3 mt-5">
+                    <div class="card h-100 justify-content-center">
+                        <img src="@item.ImagePath" class="card-img-top" />
 
-    <form method="post" asp-page-handler="AddTillCart">
-            <div class="row">
-                @foreach (var item in Model.Items)
-                {
-                    <div class="col-md-3 mt-5">
-                        <div class="card h-100">
-                            <img src="@item.ImagePath" class="card-img-top"/>
-
-                            <div class="card-body">
-                                <p class="card-text"><strong>@item.Name</strong></p>
-                                 <div class="price">@item.Price,-</div>
-                            </div>
+                        <div class="card-body">
+                            <p class="card-text"><strong>@item.Name</strong></p>
+                            <div class="price">@item.Price,-</div>
+                        </div>
+                        @if (user != null && user.UserName == "Admin")
+                        {
+                            <form method="get" class="align-self-center" asp-page="Items/EditItem" asp-route-id="@item.Id">
+                                <button>Redigér item</button>
+                            </form>
+                        }
+                        else
+                        {
                             <div class="card-footer">
 
                                 <form method="post" asp-page-handler="SletKurv">
@@ -38,12 +53,17 @@
                                     <input type="hidden" name="itemId" value="@item.Id" />
                                     <button class="btn btn-success">Tilføj til kurv</button>
                                 </form>
+
                             </div>
-                        </div>
+                        }
+
+                        
                     </div>
-                }
-            </div>
-    </form>
+                </div>
+            }
+        </div>
+
+
     </div>
 
 </body>
