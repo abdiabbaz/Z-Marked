@@ -22,7 +22,7 @@ namespace Z_Marked.Pages.UserFiles.Logins
         [Required(ErrorMessage = "Brugernavn skal skrives")]
         public string UserName { get; set; }
         [Required(ErrorMessage = "Kodeord skal skrives")]
-        [StringLength(100, MinimumLength = 7)]
+        [StringLength(40, MinimumLength = 7)]
         public string Password { get; set; }
         [Required(ErrorMessage = "Ukendt login!")]
         public bool Match { get; set; } = false;
