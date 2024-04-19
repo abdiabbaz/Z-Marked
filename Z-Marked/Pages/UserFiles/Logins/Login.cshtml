@@ -2,10 +2,21 @@
 @model Z_Marked.Pages.UserFiles.Logins.LoginModel
 @{
 }
-<form method="post" class="form-control">
-    <input type="text" asp-for="UserName" placeholder="Type username here"/>
-    <input type="password" asp-for="Password" placeholder="Type password here"/>
-    <span class="alert-warning" asp-validation-for="Match"></span>
-    
-    <input type="submit"/> 
-</form>
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-4">
+            <form method="post" class="form-control">
+                <input type="text" asp-for="UserName" placeholder="Indtast brugernavn her" />
+                <input type="password" asp-for="Password" placeholder="Indtast kodeord her" />
+                <span class="alert-warning" asp-validation-for="Match"></span>
+                <input type="submit" value="Login" />
+            </form>
+        
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+
+
+
