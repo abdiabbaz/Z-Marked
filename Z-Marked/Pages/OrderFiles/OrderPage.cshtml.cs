@@ -13,6 +13,11 @@ namespace Z_Marked.Pages.OrderFiles
             _order = order;
         }
 
+        [BindProperty]
+        public DateTime? Dato { get; set; }
+        public static bool AktiverDato { get; set; } // Static property
+
+        public bool IsAktiverDato { get; set; } // Instance property
         public double TotalAmount { get; set; }
 
         public int quantity { get; set; }
@@ -20,6 +25,7 @@ namespace Z_Marked.Pages.OrderFiles
 
         public void OnGet()
         {
+            IsAktiverDato = AktiverDato; // Set instance property based on static value
             ItemsPerPage = _order.GetItemsDictionary();
             TotalAmount = _order.SumOfAllItemsDic();
         }
@@ -40,6 +46,18 @@ namespace Z_Marked.Pages.OrderFiles
 
             }
             return RedirectToPage();
+        }
+
+        public IActionResult OnPostAktiverDatoVælger()
+        {
+            AktiverDato = true;
+            return RedirectToPage();
+        }
+
+        public IActionResult OnPostValgtDato()
+        {
+            DateTime valgtdato = (DateTime)Dato;
+            return Page();
         }
 
     }
